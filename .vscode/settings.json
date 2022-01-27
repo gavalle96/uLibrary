@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/88194b37-073b-4da9-b220-ba2ef9dbfd81/resourceGroups/Pruebas/providers/Microsoft.Web/sites/ulibrary",
+    "appService.deploySubpath": "dist\\library"
+}
