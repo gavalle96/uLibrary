@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
@@ -52,8 +52,10 @@ export class RestService {
   //#endregion
 
   //#region Libros BOOKS
-  getBooks(id?:number): Observable<any[]>{
-    return this.http.get<any>(this.apiURL+"Books"+(id ? "/"+id : ""), {headers:{"Content-Type": "application/json"}});
+  getBooks(id?:number, title?:string, author?: string, genreId?: string): Observable<any[]>{
+    return this.http.get<any>(this.apiURL+"Books"+(id ? "/"+id : "")+"?"+(title ? "title="+title:"")+ (author?"&author="+author : "")+ (genreId?"&genreId="+genreId : ""), {headers:{"Content-Type": "application/json"}
+    
+  } );
   }
 
   updateBook(book:any): Observable<any>{

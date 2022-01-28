@@ -19,6 +19,11 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { MenuComponent } from './menu/menu.component';
+import {MatSelectModule} from '@angular/material/select';
+import {MatTableModule} from '@angular/material/table';
+import {MatIconModule} from '@angular/material/icon';
+import { BookAddComponent } from './pages/book-add/book-add.component';
+import {MatDialogModule} from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -28,7 +33,8 @@ import { MenuComponent } from './menu/menu.component';
     BooksComponent,
     GenresComponent,
     CheckoutComponent,
-    MenuComponent
+    MenuComponent,
+    BookAddComponent
   ],
   imports: [
     BrowserModule,
@@ -42,7 +48,11 @@ import { MenuComponent } from './menu/menu.component';
     MatCardModule,
     MatFormFieldModule,
     MatInputModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatSelectModule,
+    MatTableModule,
+    MatIconModule,
+    MatDialogModule
   ],
   providers: [RestService],
   bootstrap: [AppComponent]

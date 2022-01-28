@@ -34,6 +34,7 @@ export class MenuComponent implements OnInit {
     .subscribe(data => {
       console.log(data);
       this.user = data;
+      sessionStorage.setItem("userRole",this.user.RoleName);
     })
   }
 
