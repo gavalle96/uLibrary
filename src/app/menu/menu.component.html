@@ -1,0 +1,19 @@
+<mat-toolbar color="primary">
+
+
+    <mat-toolbar-row *ngIf="inSession">
+        <span class="bannertitle">My U Library</span>
+        <button *ngIf="user.RoleName == 'Librarian'" mat-button routerLink="/users" routerLinkActive="active">Users</button>
+        <button *ngIf="user.RoleName == 'Librarian'" mat-button routerLink="/genres" routerLinkActive="active">Genres</button>
+        <button mat-button routerLink="/books" routerLinkActive="active">Books</button>
+        <button mat-button routerLink="/checkout" routerLinkActive="active">Checkout User-list</button>
+
+        <span class="spacer"></span>
+        <div *ngIf="user.FirstName">
+            <span>{{user.FirstName}} {{user.LastName}}</span>
+            <br>
+            <span class="subtext">{{user.RoleName}} -</span>
+            <a href="" class="subtext" (click)="logout()">(Log Out)</a>
+        </div>
+    </mat-toolbar-row>
+</mat-toolbar>

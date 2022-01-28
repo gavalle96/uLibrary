@@ -1,1 +1,49 @@
-<p>login works!</p>
+
+<mat-toolbar color="primary" >
+
+
+    <span class="bannertitle">My U Library</span>
+     
+  </mat-toolbar>
+<div class="contenedor">
+    <mat-card class="example-form">
+    <div>
+        <mat-toolbar>
+            <div class="mat-toolbar-tools">
+                <h2>Login</h2>
+            </div>
+        </mat-toolbar>
+    </div>
+    <mat-card-content>
+            <form #usrLogin="ngForm" [formGroup]="formData" (ngSubmit)="login(formData.value)" >
+
+
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Enter your email</mat-label>
+                <input matInput placeholder="pat@example.com" type="email" formControlName="email" required>
+                <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
+                    <div *ngIf="f['email'].errors['required']">Email is required</div>
+                    <div *ngIf="f['email'].errors['email']">Email format is not valid</div>
+                  </div>
+            </mat-form-field>
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Enter your password</mat-label>
+                <input matInput placeholder="Password" type="password" formControlName="password" required>
+                
+            </mat-form-field>
+            <div class="form-group">
+                <button type="submit" mat-raised-button color="primary" >Log In</button>
+            </div>
+        </form>
+        </mat-card-content>
+        
+
+        <p>Acceso de pruebas:</p>
+        <ul>
+            <li>Email: gavalle96@gmail.com</li>
+            <li>Password: passphrase</li>
+            <li>Rol: Librarian</li>
+        </ul>
+    
+</mat-card>
+</div>

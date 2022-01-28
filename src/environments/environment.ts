@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  baseUrl: "https://localhost:44381/api/"
+  baseUrl: "https://libraryapigv.azurewebsites.net/api/"
 };
 
 /*
