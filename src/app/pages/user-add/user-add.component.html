@@ -1,0 +1,59 @@
+<h1 mat-dialog-title>Add Book</h1>
+<div mat-dialog-content>
+    <form  [formGroup]="formData" (ngSubmit)="add(formData.value)" >
+
+
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>First Name</mat-label>
+            <input matInput type="text" formControlName="FirstName" required>
+            <div *ngIf="submitted && f['FirstName'].errors" class="invalid-feedback">
+                <div *ngIf="f['FirstName'].errors['required']">First Name is required</div>
+                
+              </div>
+        </mat-form-field>
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Last Name</mat-label>
+            <input matInput type="text" formControlName="LastName" required>
+            <div *ngIf="submitted && f['LastName'].errors" class="invalid-feedback">
+                <div *ngIf="f['LastName'].errors['required']">Last Name is required</div>
+                
+              </div>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Email</mat-label>
+            <input matInput type="email" formControlName="Email" required>
+            <div *ngIf="submitted && f['Email'].errors" class="invalid-feedback">
+                <div *ngIf="f['Email'].errors['required']">Email is required</div>
+                
+              </div>
+        </mat-form-field>
+
+        
+
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Default Password</mat-label>
+            <input matInput type="text" formControlName="Password" required>
+            <div *ngIf="submitted && f['Password'].errors" class="invalid-feedback">
+                <div *ngIf="f['Password'].errors['required']">Password is required</div>
+                
+              </div>
+        </mat-form-field>
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Role</mat-label>
+            <mat-select formControlName="Role">
+                <mat-option value="Student">
+                    Student
+                </mat-option>
+                <mat-option value="Librarian">
+                    Librarian
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        
+        <div class="form-group">
+            <button type="submit" mat-raised-button [mat-dialog-close]="true" color="primary" >Save</button>
+        </div>
+    </form>
+</div>

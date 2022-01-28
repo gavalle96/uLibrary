@@ -24,6 +24,7 @@ import {MatTableModule} from '@angular/material/table';
 import {MatIconModule} from '@angular/material/icon';
 import { BookAddComponent } from './pages/book-add/book-add.component';
 import {MatDialogModule} from '@angular/material/dialog';
+import { UserAddComponent } from './pages/user-add/user-add.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import {MatDialogModule} from '@angular/material/dialog';
     GenresComponent,
     CheckoutComponent,
     MenuComponent,
-    BookAddComponent
+    BookAddComponent,
+    UserAddComponent
   ],
   imports: [
     BrowserModule,
