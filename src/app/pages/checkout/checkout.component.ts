@@ -6,10 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./checkout.component.css']
 })
 export class CheckoutComponent implements OnInit {
-
+  userRole: any;
   constructor() { }
 
   ngOnInit(): void {
+    this.userRole = sessionStorage.getItem("userRole"); 
   }
 
 }

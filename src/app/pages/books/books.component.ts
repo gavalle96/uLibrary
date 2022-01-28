@@ -20,7 +20,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class BooksComponent implements OnInit {
 
-  userRole: any = {};
+  userRole: any;
   title = "";
   author = "";
   genre = ""
