@@ -52,7 +52,7 @@ export class RestService {
   //#endregion
 
   //#region Libros BOOKS
-  getBooks(id?:number, title?:string, author?: string, genreId?: string): Observable<any[]>{
+  getBooks(id?:number, title?:string, author?: string, genreId?: string): Observable<any>{
     return this.http.get<any>(this.apiURL+"Books"+(id ? "/"+id : "")+"?"+(title ? "title="+title:"")+ (author?"&author="+author : "")+ (genreId?"&genreId="+genreId : ""), {headers:{"Content-Type": "application/json"}
     
   } );

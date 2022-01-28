@@ -55,6 +55,14 @@
           <br>
           Available Copies: {{element.Stock}}
         </div>
+        <div *ngIf="userRole != 'Librarian'" class="example-element-description">
+          <span> Request copies </span>
+          
+          <input type="number" min="0" [max]="element.Stock" matInput [(ngModel)]="checkout" value="0">
+          <button (click)="makeCheckOut(element.Id, element.Stock)" mat-raised-button color="primary">
+            <mat-icon aria-hidden="false"  aria-label="Add icon">add_shopping_cart</mat-icon> CheckOut
+        </button>
+        </div>
       </div>
     </td>
   </ng-container>

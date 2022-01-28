@@ -4,6 +4,7 @@ import { RestService } from 'src/app/services/rest.service';
 import {animate, state, style, transition, trigger} from '@angular/animations';
 import { MatDialog } from '@angular/material/dialog';
 import { BookAddComponent } from '../book-add/book-add.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-books',
@@ -27,7 +28,10 @@ export class BooksComponent implements OnInit {
   books$!: Observable<any[]>;
   expandedElement: any;
   displayedColumns: string[] = ['Title', 'Author', 'PublishedYear'];
-  constructor(private rest: RestService, public dialog: MatDialog) {
+
+  checkout = 0;
+  constructor(private rest: RestService, public dialog: MatDialog
+    , private _snackBar: MatSnackBar) {
     
    
    }
@@ -63,5 +67,51 @@ export class BooksComponent implements OnInit {
 
   getGenreName(id:number){
     return this.genres.filter((item: any) =>  item.Id == id)[0].Name;
+  }
+
+  makeCheckOut(BookId:number, stock: number){
+    if(this.checkout <= 0){
+      this.openSnackBar("The requested quantity of copies cannot be less than one")
+      return;
+    }
+    if(this.checkout > stock){
+      this.openSnackBar("The requested quantity of copies cannot be greater than the stock")
+      return;
+    }
+    console.log(BookId);
+    this.rest.addCheckOut({
+      Id: 0,
+      RequestDate: new Date().toISOString(),
+      isReturned: false,
+      BookId: BookId,
+      UserId: sessionStorage.getItem("userId"),
+      Copies: this.checkout
+    })
+    .subscribe(data=>{
+      this.checkout = 0;
+      this.decreaseBookStock(BookId, this.checkout, stock);
+    })
+  }
+
+  decreaseBookStock(BookId:number, qty:number, stock: number){
+    
+    this.rest.getBooks(BookId)
+    .subscribe(book =>{
+      let newStock = book.Stock - qty;
+      book.Stock = newStock;
+      this.rest.updateBook(book)
+      .subscribe(data=>{
+        this.filter();
+        this.openSnackBar("CheckOut Completed!")
+      })
+    })
+  }
+
+  openSnackBar(message: string) {
+    this._snackBar.open(message, undefined, {
+      horizontalPosition: "center",
+      verticalPosition: "top",
+      duration: 4000
+    });
   }
 }

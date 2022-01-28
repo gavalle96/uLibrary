@@ -6,7 +6,7 @@
         <button mat-button routerLink="/books" routerLinkActive="active">Books</button>
         <button *ngIf="user.RoleName == 'Librarian'" mat-button routerLink="/users" routerLinkActive="active">Users</button>
         <!-- <button *ngIf="user.RoleName == 'Librarian'" mat-button routerLink="/genres" routerLinkActive="active">Genres</button> -->
-        <button mat-button routerLink="/checkout" routerLinkActive="active">Checkout User-list</button>
+        <button mat-button routerLink="/checkout" routerLinkActive="active">{{user.RoleName == 'Librarian' ? "Checkout User-list" : "My Checkout"}}</button>
 
         <span class="spacer"></span>
         <div *ngIf="user.FirstName">
